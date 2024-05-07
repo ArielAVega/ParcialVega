@@ -24,8 +24,19 @@ class Pelota extends GameObject implements IContadorRebote{
     boolean rebota = false;
     if(this.position.x + (this.radio)>anchoPantalla){
       rebota = true;
-      this.velocidad.x*=(-1);
+      actualizarVelocidad();
     }
+    
+    if(this.position.x - (this.radio)<0){
+      rebota = true;
+      actualizarVelocidad();
+    }
+    
     return rebota;
   }
+  
+  private void actualizarVelocidad(){
+    this.velocidad.x*=(-1);
+  }
+  
 }
