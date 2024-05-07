@@ -1,10 +1,13 @@
 private Pelota pelota;
 private int contadorRebotes;
 private int anchoPantalla;
+private PImage imageBackground;
 
 void setup(){
   pelota = new Pelota(new PVector(width/2,height/2));
   contadorRebotes = 0;
+  imageBackground = loadImage("cesped.png");
+  imageBackground.resize(width,height);
 }
 
 void settings(){
@@ -13,7 +16,7 @@ void settings(){
 }
 
 public void draw(){
-  background(0);
+  visualizarFondo();
   pelota.display();
   pelota.mover();
   actualizarContador();
@@ -30,4 +33,9 @@ public void actualizarContador(){
   if(rebota){
     contadorRebotes++;
   }
+}
+
+public void visualizarFondo(){
+   imageMode(CORNER);
+   image(imageBackground,0,0); 
 }
